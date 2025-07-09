@@ -1,0 +1,1 @@
+cout<< fact(a)/(fact(b)*fact(a-b));
