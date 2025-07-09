@@ -1,0 +1,1 @@
+College Bank is a student-focused website offering organized access to previous year papers, notes, and PPTs for courses like BSc, BA, BCom, BCA, MA, and MSc. Specially built for students of Soban Singh Jeena University, it simplifies academic preparation semester-wise.
