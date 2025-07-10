@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Previous Year Papers | College Bank</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .select-area {
+      margin: 20px;
+    }
+
+    .year-section {
+      margin: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .year-section h3 {
+      margin-top: 0;
+      color: #333;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 5px;
+    }
+
+    .year-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .year-section li {
+      margin: 8px 0;
+    }
+
+    .year-section a {
+      text-decoration: none;
+      color: #0056b3;
+    }
+
+    .year-section a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>College Bank</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="notes.html">Notes & PPTs</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Find Previous Year Papers</h2>
+  <p>Select your Semester and Course to get subject-wise paper links</p>
+</section>
+
+<section class="select-area">
+  <label for="semester">Semester:</label>
+  <select id="semester">
+    <option value="">--Select Semester--</option>
+    <option value="sem1">1st Semester</option>
+    <option value="sem2">2nd Semester</option>
+    <option value="sem3">3rd Semester</option>
+    <option value="sem4">4th Semester</option>
+    <option value="sem5">5th Semester</option>
+    <option value="sem6">6th Semester</option>
+    <option value="sem7">7th Semester</option>
+    <option value="sem8">8th Semester</option>
+  </select>
+
+  <label for="course">Course:</label>
+  <select id="course">
+    <option value="">--Select Course--</option>
+    <option value="bsc">BSc</option>
+    <option value="ba">BA</option>
+    <option value="bcom">BCom</option>
+    <option value="bca">BCA</option>
+    <option value="ma">MA</option>
+    <option value="msc">MSc</option>
+  </select>
+</section>
+
+<section id="year-container"></section>
+
+<footer>&copy; 2025 College Bank</footer>
+
+<script>
+const papersData = {
+  sem1:{
+    bsc:{
+      "2023":{
+        "Botany": "",
+        "Zoology": "",
+        "Mathematics": "",
+        "Physics": "",
+        "Chemistry": "",
+        "Computer Science": "",
+        "Information Technology": "",
+        "Business Statistics": "",
+        "Environmental Studies": "",
+        "Political Science": "",
+        "Psychology":"",
+        "Communication Skills Minor":"",
+        "Fundamentals of Computer Voccational":""
+      },
+      "2024-25":{
+        "Botany": "",
+        "Zoology": "",
+        "Mathematics": "pypBSC1/BSC-1-MATHS-2024-25.pdf",
+        "Physics": "pypBSC1/BSC-1-PHYSICS-2024-25.pdf",
+        "Chemistry": "",
+        "Computer Science": "pypBSC1/BSC-1-CS-2024-25.pdf",
+        "Information Technology": "",
+        "Business Statistics": "",
+        "Environmental Studies": "",
+        "Political Science": "",
+        "Psychology":"",
+        "Communication Skills Minor":"pypBSC1/BSC-BCOM-1-COMMUNICATION SKILLS-2024-25.pdf",
+        "Fundamentals of Computer Voccational":"pypBSC1/BSC-1-FUNDAMENTAL OF COMP-2024-25.pdf"
+      }
+    },
+    ba:{
+      "2021-22":{
+        "English":"",
+        "Political Science":"",
+        "History paper 1":"pypBA1/BA-SEM 1-HISTORY PAPER 1ST 2021-22.pdf",
+        "History Paper 2":"pypBA1/BA-1ST SEM - HISTORY PAPER 2nd 2021-22.pdf",
+        "Maths":"",
+      },
+
+      "2022-23":{
+        "Anatomy of physical education":"pypBA1/ba-1-sem-Anatomy-phy.Education-2022.pdf",
+        "English Literature Elizabeth drama":"pypBA1/ba-1-sem-english-2022.pdf",
+        "English Literature Prose Till 18th Cent.":"pypBA1/ba-1-sem-english-literature-prose-2022.pdf",
+        "Fundamental of Physical Education":"pypBA1/ba-1-sem-funda-Phy.Ed-2022.pdf",
+        "Maths Differential Calculus":"pypBA1/bsc-ba-1-sem-maths-diff.cal-2022.pdf",
+        "Maths Matrix and Trigonometry":"pypBA1/bsc-ba-1-sem-maths-trigo-matrix-2022.pdf"
+      },
+
+      "2023-24":{
+        "Communication Skills":"pypBA1/ba-1-sem-communication-skills-2023-24.pdf",
+        "Economics":"pypBA1/ba-1-sem-economics-2023.pdf",
+        "English":"pypBA1/ba-1-sem-english-2023-24.pdf",
+        "History":"pypBA1/ba-1-sem-history-p1-2023-24.pdf",
+        "Maths Matrix and Trigo":"pypBA1/ba-1-sem-maths-matrics-trigo-2023-24.pdf",
+        "Political Science":"pypBA1/ba-1-sem-political-science-2023.pdf",
+        "Sociology":"pypBA1/ba-1-sem-sociology-p1-2023.pdf"
+
+      },
+      "2024-25":{
+        "English":"pypBA1/BA-1-ENGLISH-2024-25.pdf",
+        "Political Science":"pypBA1/BA-1-POLITICAL-2024-25.pdf",
+        "History":"",
+        "Maths":"pypBA1/BSC-1-MATHS-2024-25.pdf",
+        "Critical thinking":"pypBA1/BA-1-CRITICAL THINKING -2024-25.pdf",
+        "Communication Skill minor":"pypBA1/BA-1-COMMUNICATION SKILLS-2024-25.pdf"
+      }
+    }
+  },
+  sem2: {
+    bsc: { 
+      "2021-22":{
+        "Botany Ptredophyta and Gymnosperms":"pypBsc2/bsc-1-botany-pter.-and-gymno-2022.pdf",
+        "Botany Ecology and Biostatistics":"pypBsc2/bsc-2-2022-sem-botany-ecology-and-biostatistics.pdf",
+        "Chemistry":"pypBsc2/bsc-2-2022-sem-physical-chemistry.pdf",
+        "Physics theory of oscillation":"pypBsc2/bsc-2-2022-sem-theory-of-oscillations-phys2611.pdf",
+        "Physics Waves Acoustics and Electromagnetic Waves":"pypBsc2/bsc-2-2022-waves-acoustics-and-electro.pdf",
+        "Zoology Molecular Biology Elementer Biotechnology":"pypBsc2/bsc-2-sem-zoology-2022.pdf",
+        "Zoology Cell Biotics and Genetics":"pypBsc2/bsc-2-zoology-cell-bio-and-gene-2022.pdf",
+      },
+      "2022-23":{
+        "English Creative Writing":"pypBsc2/ba-bsc-bcom-2-2023-sem-english-creative-writing.pdf",
+        "Mathematics Integral Calculus":"pypBsc2/ba-bsc-2-2024-mathematics-integral-calculas-and-vector-analysis-mats2610.pdf",
+        "Botany Ptridophytes and angiosperms":"pypBsc2/bsc-2-2023-sem-botany-p1-pteridophytes-gymnosperms-and-angiosperm.pdf",
+        "Business Statistics":"pypBsc2/bsc-2-2023-sem-business-statistics-vocational-vbus2610.pdf",
+        "Chemistry":"pypBsc2/bsc-2-2023-sem-chemistry-p1-fundamentals-of-chemistry-.pdf",
+        "Zoology":"pypBsc2/bsc-2-2023-sem-zoology-p1-genetics-and-cell-biology.pdf",
+        "Inorganic chemistry":"pypBsc2/bsc-2-sem-inorg-chemistry-2022.pdf",
+        "Environmental Studies":"pypBsc2/bsc-bcom-2-sem-enviro-studies-2023.pdf"
+
+      },
+
+      "2023-24":{
+        "Mathematics Integral Calculus":"pypBsc2/ba-bsc-2-2024-sem-mathematics-integral-calculas-and-vector-analysi.pdf",
+        "Geography":"pypBsc2/ba-bsc-bcom-2-2024-sem-geography-applied-geomorphology.pdf",
+        "Physical education":"pypBsc2/ba-bsc-bcom-2-2024-sem-physical-education-basics-of-physical-edu.pdf",
+        "Chemistry":"pypBsc2/bsc-2-2024-sem-chemistry-fundamentals-of-chemistry-2-.pdf",
+        "Physics":"pypBsc2/bsc-2-2024-sem-physics-electricity-and-magnetism.pdf",
+        "Business Statistics":"pypBsc2/bsc-2-sem-business-stat-2024.pdf",
+        "Environmental Studies and Value Education":"pypBsc2/bsc-bcom-2-2024-sem-environmental-studies-and-value-education.pdf"
+      
+    },
+      "2023-24":{
+
+    },
+      "2024-25": {
+        "Botany": "pypBsc2/Bsc-Sem2-Botany-Major-2025.pdf",
+        "Zoology": "pypBsc2/Bsc-Sem 2-Zoology-Major-2025.pdf",
+        "Mathematics": "pypBsc2/BA_BSC_SEM 2_MATHEMATICS_MAJOR_2025.pdf",
+        "Physics": "pypBsc2/BSC_SEM 2_PHYSICS_MAJOR_2025.pdf",
+        "Chemistry": "pypBsc2/BSC_SEM 2_CHEMISTRY_2025.pdf",
+        "Computer Science": "pypBsc2/BSC_SEM 2_COMPUTER SCIENCE_MAJOR_2025.pdf",
+        "Information Technology": "pypBsc2/BSC_SEM 2_INFORNATION TECHNOLOGY_2025.pdf",
+        "Business Statistics": "pypBsc2/BSC_SEM 2_BUSINESS STATISTICS_MINOR_2025.pdf",
+        "Environmental Studies": "pypBsc2/BSC_BCOM_SEM 2_ENVIRONMENTAL STUDIES_MINOR_2025.pdf",
+        "Political Science": "pypBsc2/BSC-SEM 2-POLITICAL SCIENCE -MINOR-2025.pdf",
+        "Psychology": "pypBsc2/BSC-SEM 2-PSYCHOLOGY MINOR-2025.pdf"
+      }
+    },
+    ba: {
+    "2022-23":{
+      "English Literature":"pypBA2/ba-2-2022-sem-english-literature-18th-century-drama.pdf",
+      "Hindi":"pypBA2/ba-2-2022-sem-hindi-language.pdf",
+      "Hindi Riti Kalin kavy":"pypBA2/ba-2-2022-sem-hindi-literature-reeti-kalin-kavya.pdf",
+      "History and development in PHYSICAL EDUCATION ":"pypBA2/ba-2-2022-sem-pe-history-and-development-in-physical-educatio.pdf",
+      "Psychology of Exercise in PHYSICAL EDUCATION":"pypBA2/ba-2-2022-sem-pe-physiology-of-exercise-in-physical-education (2).pdf",
+      "Sanskrit Literature":"pypBA2/ba-2-2022-sem-sanskrit-literature-sans.pdf",
+      "Sanskrit Kavy":"pypBA2/ba-2-2022-sem-sanskrit-literature-sanskrit-kavya.pdf",
+      "English Literature Poentry till 18th Century":"pypBA2/ba-2-2022sem-english-literature-poetry-till-18th-century.pdf",
+      "Economics quantitative methods in eco.":"pypBA2/ba-bsc-2-2022-sem-economics-quantitative-methods-in-economics.pdf",
+      "Maths Integral Calculus":"pypBA2/ba-bsc-2-integral-cal-2022.pdf",
+      "Micro Economics":"pypBA2/ba-bsc-2-sem-eco-mic-2022.pdf",
+      "Maths Geometry and Vector Analysis":"pypBA2/ba-bsc-2-sem-maths-2022.pdf",
+    },
+      "2023-24":{
+        
+      },
+      "2024-25": {
+        "Geography": "pypBA4/BA_BSC-2ND SEM -GEOGRAPHY MAJOR-2025.pdf",
+        "Political Science": "pypBA4/BA_SEM 2_POLITICAL SCIENCE _MAJOR_2025.pdf",
+        "Environmental Studies": "pypBA4/BA_SEM 2_ENVIRONMENTAL STUDIES_MINOR_2025.pdf",
+        "History": "pypBA4/BA_SEM 2_HISTORY_MAJOR_2025.pdf",
+        "Mathematics": "pypBsc2/BA_BSC_SEM 2_MATHEMATICS_MAJOR_2025.pdf",
+        "Leadership": "pypBA4/BA_SEM 2_LEADERSHIP_MINOR_2025.pdf",
+        "English": "pypBA4/BA_SEM 2_ENGLISH_MAJOR_2025.pdf",
+        "Political Science Minor": "pypBsc2/BSC-SEM 2-POLITICAL SCIENCE -MINOR-2025.pdf"
+      }
+    },
+    bca: {
+      "2025": {
+        "Computer Science Paper1": "pypBCA2/BCA-CS-PAPER-1-2025.pdf",
+        "Computer Science Paper2": "pypBCA2/BCA-PAPER-2-2025.pdf"
+      }
+    },
+    bcom: {
+      "2022-23":{
+        "English Creative writting":"pypBcom2/ba-bsc-bcom-2-2023-sem-english-creative-writing.pdf"
+      },
+      "2023-24":{
+        "Geography":"pypBcom2/ba-bsc-bcom-2-2024-sem-geography-applied-geomorphology.pdf",
+        "Physical Education":"pypBcom2/ba-bsc-bcom-2-2024-sem-physical-education-basics-of-physical-edu.pdf",
+        "Mathematics Integral Calculus and Vector Analysis":"pypBcom2/ba-bsc-2-2024-sem-mathematics-integral-calculas-and-vector-analysi.pdf"
+      },
+      "2024-25": {
+        "Business Finance": "pypBcom2/Basic_Bussiness_Finance_BCOM_2ndSem_2025.pdf",
+        "Business Statistics": "pypBcom2/BCOM_SEM 2_BUSINESS STATISTICS_2025.pdf",
+        "Economics": "pypBcom2/Economy_of_uttarakhand_BCOM_2ndSem_2025.pdf",
+        "Political Science": "pypBsc2/BSC-SEM 2-POLITICAL SCIENCE -MINOR-2025.pdf"
+      }
+    },
+    msc: {
+      "2025": {
+        "Mathematics": "",
+        "Inorganic Chemistry": "",
+        "Physical Chemistry": "",
+        "Organic Chemistry": "",
+        "Physics": ""
+      }
+    }
+  },
+  sem3:{
+    "2022-23":{
+      
+    }
+  }
+};
+
+const semesterSelect = document.getElementById("semester");
+const courseSelect = document.getElementById("course");
+const yearContainer = document.getElementById("year-container");
+
+function updateYearSections() {
+  const sem = semesterSelect.value;
+  const course = courseSelect.value;
+  yearContainer.innerHTML = "";
+
+  if (papersData[sem] && papersData[sem][course]) {
+    const yearData = papersData[sem][course];
+    for (const year in yearData) {
+      const section = document.createElement("div");
+      section.className = "year-section";
+      section.innerHTML = `<h3>Papers for ${year}</h3><ul></ul>`;
+      const ul = section.querySelector("ul");
+
+      for (const subject in yearData[year]) {
+        const link = yearData[year][subject];
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = link || "#";
+        a.textContent = subject;
+        a.target = "_blank";
+        li.appendChild(a);
+        ul.appendChild(li);
+      }
+
+      yearContainer.appendChild(section);
+    }
+  }
+}
+
+semesterSelect.addEventListener("change", updateYearSections);
+courseSelect.addEventListener("change", updateYearSections);
+</script>
+
+</body>
+</html>
